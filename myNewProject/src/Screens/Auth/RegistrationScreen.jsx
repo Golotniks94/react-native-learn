@@ -12,9 +12,9 @@ import {
   Keyboard,
 } from 'react-native'
 
-const image = require('../../assets/image/background.png')
-const avatar = require('../../assets/image/avatarInput.png')
-const avatarPhoto = require('../../assets/image/avatarPhoto.png')
+const image = require('../../assets/images/background.png')
+const avatar = require('../../assets/images/avatarInput.png')
+const avatarPhoto = require('../../assets/images/avatarPhoto.png')
 
 const initialState = {
   login: '',
