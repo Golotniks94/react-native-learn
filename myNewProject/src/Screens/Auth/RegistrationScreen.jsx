@@ -11,6 +11,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native'
+import { renderButton } from './renderButton'
 
 const image = require('../../assets/images/background.png')
 const avatar = require('../../assets/images/avatarInput.png')
@@ -40,33 +41,6 @@ export const RegistrationScreen = ({ onLayoutRootView, navigation }) => {
   const closeKeyboardToggler = () => {
     Keyboard.dismiss()
     setIsShowKeyboard(false)
-  }
-
-  const renderButton = () => {
-    if (!isShowKeyboard) {
-      return (
-        <View>
-          <TouchableOpacity
-            style={styles.btn}
-            activeOpacity={0.5}
-            onPress={() => {
-              setState(initialState)
-              navigation.navigate('Home')
-            }}
-          >
-            <Text style={styles.btnText}>Зарегистрироваться</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            activeOpacity={0.5}
-            onPress={() => {
-              navigation.navigate('Login')
-            }}
-          >
-            <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
-          </TouchableOpacity>
-        </View>
-      )
-    }
   }
 
   return (
@@ -183,7 +157,13 @@ export const RegistrationScreen = ({ onLayoutRootView, navigation }) => {
                   <Text>Показать</Text>
                 </TouchableOpacity>
               </View>
-              {renderButton()}
+              {renderButton(
+                isShowKeyboard,
+                setState,
+                initialState,
+                navigation,
+                'Login'
+              )}
             </View>
           </KeyboardAvoidingView>
         </ImageBackground>
