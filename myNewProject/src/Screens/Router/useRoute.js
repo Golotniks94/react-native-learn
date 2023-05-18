@@ -12,62 +12,56 @@ SplashScreen.preventAutoHideAsync()
 const Stack = createNativeStackNavigator()
 
 export const useRoute = (isAuth) => {
-    const [fontsLoaded] = useFonts({
-        'Roboto-Medium': require('../../assets/fonts/Roboto-Medium.ttf'),
-        'Roboto-Regular': require('../../assets/fonts/Roboto-Regular.ttf'),
-    })
+  const [fontsLoaded] = useFonts({
+    'Roboto-Medium': require('../../assets/fonts/Roboto-Medium.ttf'),
+    'Roboto-Regular': require('../../assets/fonts/Roboto-Regular.ttf'),
+  })
 
-    const onLayoutRootView = useCallback(async () => {
-        if (fontsLoaded) {
-            await SplashScreen.hideAsync()
-        }
-    }, [fontsLoaded])
-
-    if (!fontsLoaded) {
-        return null
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync()
     }
+  }, [fontsLoaded])
 
-    if (!isAuth) {
-        return (
-            <Stack.Navigator
-                screenOptions={{
-                    headerShown: false,
-                }}
-            >
-                <Stack.Screen name="Login">
-                    {(props) => (
-                        <LoginScreen
-                            {...props}
-                            onLayoutRootView={onLayoutRootView}
-                        />
-                    )}
-                </Stack.Screen>
-                <Stack.Screen name="Registration">
-                    {(props) => (
-                        <RegistrationScreen
-                            {...props}
-                            onLayoutRootView={onLayoutRootView}
-                        />
-                    )}
-                </Stack.Screen>
-            </Stack.Navigator>
-        )
-    } else {
-        return (
-            <Stack.Navigator
-                screenOptions={{
-                    headerShown: false,
-                }}
-            >
-                <Stack.Screen name="Home">
-                    {(props) => (
-                        <HomeScreen
-                            {...props}
-                            onLayoutRootView={onLayoutRootView}
-                        />
-                    )}
-                </Stack.Screen>
-            </Stack.Navigator>
-        )
-    }
+  if (!fontsLoaded) {
+    return null
+  }
+
+  if (!isAuth) {
+    return (
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="Login">
+          {(props) => (
+            <LoginScreen {...props} onLayoutRootView={onLayoutRootView} />
+          )}
+        </Stack.Screen>
+        <Stack.Screen name="Registration">
+          {(props) => (
+            <RegistrationScreen
+              {...props}
+              onLayoutRootView={onLayoutRootView}
+            />
+          )}
+        </Stack.Screen>
+      </Stack.Navigator>
+    )
+  } else {
+    return (
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="Home">
+          {(props) => (
+            <HomeScreen {...props} onLayoutRootView={onLayoutRootView} />
+          )}
+        </Stack.Screen>
+      </Stack.Navigator>
+    )
+  }
 }

@@ -7,16 +7,16 @@ import { userRefresh } from '../../redux/auth/authOperations'
 import { dataPosts } from '../../redux/posts/postsOperations'
 
 export const DefaultApp = () => {
-    const dispatch = useDispatch()
-    const { isLogged } = useSelector(selectIsLogged)
-    const router = useRoute(isLogged)
+  const dispatch = useDispatch()
+  const { isLogged } = useSelector(selectIsLogged)
+  const router = useRoute(isLogged)
 
-    useEffect(() => {
-        if (isLogged) {
-            dispatch(userRefresh())
-            dispatch(dataPosts())
-        }
-    }, [dispatch])
+  useEffect(() => {
+    if (isLogged) {
+      dispatch(userRefresh())
+      dispatch(dataPosts())
+    }
+  }, [dispatch])
 
-    return <NavigationContainer>{router}</NavigationContainer>
+  return <NavigationContainer>{router}</NavigationContainer>
 }
