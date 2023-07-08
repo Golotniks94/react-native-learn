@@ -21,7 +21,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.bob56.myNewProject"
+      "package": "com.bob56.react-native-learn"
     },
     "web": {
       "favicon": "./assets/favicon.png"
